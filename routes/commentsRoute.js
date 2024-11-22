@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
 
 	try {
 		//Save the bread collections
-		const newBun = new Bun({
+		const newBun = new Bread({
 			bunType,
 			description,
 			price,
