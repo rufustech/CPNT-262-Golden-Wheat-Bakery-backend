@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+const breadRoute = require("./routes/breadroute");
+const userRoute = require("./routes/userAuthRoute");
+
 const app = express();
 
 // Middleware for parsing JSON
@@ -14,7 +17,8 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // API Routes
-// app.use('/api/example', exampleRoutes);
+app.use("/api/bread", breadRoute);
+app.use("/api/user", userRoute);
 
 // Default Route
 app.get("/", (req, res) => {
