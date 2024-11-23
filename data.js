@@ -1,3 +1,4 @@
+//Using this to populate data to our DB for endpoint testing
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -13,37 +14,25 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-const User = require("./models/userAuthModel");
+const Bread = require("./models/breadModel");
 
-const addUser = async () => {
-  const user = {
-    username: "Feli",
-    email: "feli@ceo.com",
-    password: "felirocks",
-    createdAt: new Date(),
+const addBread = async () => {
+  const bread = {
+    breadType: "Sour Dough",
+    description: "Awesome Dough",
+    price: 5,
+    weight: 200,
+    shelfLife: "2 days",
+    ingredients: ["flour", "salt"],
+    inventory: 10,
   };
 
   try {
-    const result = await User.create(user);
+    const result = await Bread.create(bread);
     console.log("user added", result);
   } catch (err) {
     console.error("Error adding user:", err);
   }
 };
 
-addUser();
-
-
-
-// API Routes
-/*app.use("/api/bread", breadRoute);
-app.use("/api/user", userRoute);
-
-// Default Route
-app.get("/ ", (req, res) => {
-  res.send("Welcome to the Node.js Server!");
-}); */
-
-// Start Server
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+addBread();
