@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const breadRoute = require("./routes/breadroute");
+const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userAuthRoute");
 
 const app = express();
@@ -17,7 +17,7 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // API Routes
-app.use("/api/bread", breadRoute);
+app.use("/api/products", productRoute);
 app.use("/api/user", userRoute);
 
 // Default Route

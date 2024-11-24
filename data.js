@@ -14,25 +14,26 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-const Bread = require("./models/breadModel");
+const Product = require("./models/productsModel");
 
-const addBread = async () => {
-  const bread = {
-    breadType: "Sour Dough",
-    description: "Awesome Dough",
-    price: 5,
-    weight: 200,
-    shelfLife: "2 days",
-    ingredients: ["flour", "salt"],
-    inventory: 10,
+const addProduct = async () => {
+  const product = {
+    name: "Chocolate Croissant",
+    description: "Delicious buttery croissant with a chocolate filling",
+    price: 2.99,
+    weight: 120,
+    shelfLife: "3 days",
+    ingredients: ["flour", "butter", "chocolate", "sugar"],
+    inventory: 50,
+    category: "pastries",
   };
 
   try {
-    const result = await Bread.create(bread);
+    const result = await Product.create(product);
     console.log("user added", result);
   } catch (err) {
     console.error("Error adding user:", err);
   }
 };
 
-addBread();
+addProduct();
