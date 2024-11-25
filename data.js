@@ -54,3 +54,4 @@ const addProduct = async () => {
 };
 
 addProduct();
+addComment();
