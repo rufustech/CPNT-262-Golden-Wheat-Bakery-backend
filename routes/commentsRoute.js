@@ -1,49 +1,38 @@
 const express = require("express");
-const Buns = require("../models/bunsModel");
+const Comment = require("../models/commentsModel");
 
 const router = express.Router();
 
 //Get request
 router.get("/", async (req, res) => {
 	try {
-		const buns = await Buns.find();
-		res.status(200).json(buns);
+		const comment = await c.find();
+		res.status(200).json(comment);
 	} catch (error) {
-		res.status(500).json({ error: "Failed to fetch Bread" });
+		res.status(500).json({ error: "Failed to fetch comment" });
 	}
 });
 
 //post request
 
 router.post("/", async (req, res) => {
-	const {
-		bunType,
-		description,
-		price,
-		weight,
-		shelfLife,
-		ingredients,
-		inventory,
-	} = req.body;
+	const {} = req.body;
 
 	try {
 		//Save the bread collections
-		const newBun = new Bread({
-			bunType,
-			description,
-			price,
-			weight,
-			shelfLife,
-			ingredients,
-			inventory,
+		const newComments = new Comment({
+			user,
+			item,
+			text,
+			createdAt,
 		});
 
-		await newBun.save();
-		res.status(201).json(newBun);
+		await newComments.save();
+		res.status(201).json(newComments);
 	} catch (error) {
 		res
 			.status(400)
-			.json({ error: "Failed to create buns", details: err.message });
+			.json({ error: "Failed to create comment", details: err.message });
 	}
 });
 

@@ -1,3 +1,4 @@
+//Using this to populate data to our DB for endpoint testing
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -9,41 +10,47 @@ app.use(express.json());
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+	.connect(process.env.MONGO_URI)
+	.then(() => console.log("Connected to MongoDB"))
+	.catch((err) => console.error("MongoDB connection error:", err));
 
-const User = require("./models/userAuthModel");
+const Product = require("./models/productsModel");
+const Comment = require("./models/commentsModel");
 
-const addUser = async () => {
-  const user = {
-    username: "Feli",
-    email: "feli@ceo.com",
-    password: "felirocks",
-    createdAt: new Date(),
-  };
+const addComment = async () => {
+	const comment = {
+		user: "Felisong",
+		item: "Croissant",
+		text: "How did I get here?",
+		createdAt: "2024",
+	};
 
-  try {
-    const result = await User.create(user);
-    console.log("user added", result);
-  } catch (err) {
-    console.error("Error adding user:", err);
-  }
+	try {
+		const result = await Comment.create(product);
+		console.log("user added", result);
+	} catch (err) {
+		console.error("Error adding user:", err);
+	}
 };
 
-addUser();
+const addProduct = async () => {
+	const product = {
+		name: "Chocolate Croissant",
+		description: "Delicious buttery croissant with a chocolate filling",
+		price: 2.99,
+		weight: 120,
+		shelfLife: "3 days",
+		ingredients: ["flour", "butter", "chocolate", "sugar"],
+		inventory: 50,
+		category: "pastries",
+	};
 
+	try {
+		const result = await Product.create(product);
+		console.log("user added", result);
+	} catch (err) {
+		console.error("Error adding user:", err);
+	}
+};
 
-
-// API Routes
-/*app.use("/api/bread", breadRoute);
-app.use("/api/user", userRoute);
-
-// Default Route
-app.get("/ ", (req, res) => {
-  res.send("Welcome to the Node.js Server!");
-}); */
-
-// Start Server
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+addProduct();
