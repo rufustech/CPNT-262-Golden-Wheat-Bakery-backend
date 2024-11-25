@@ -1,5 +1,6 @@
 const Product = require("../models/productsModel");
 
+//Get all products
 const getProducts = async (req, res) => {
     const { category } = req.query;
     try {

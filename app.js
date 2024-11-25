@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+//API endpoints
 const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userAuthRoute");
 const commentsRoute = require("./routes/commentsRoute");
