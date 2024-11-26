@@ -1,4 +1,5 @@
 const User = require("../models/userAuthModel"); // Adjust the path based on your file structure
+
 exports.registerUser = async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -23,14 +24,14 @@ exports.registerUser = async (req, res) => {
 
 // Login User
 exports.loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { Username, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(400).json({ message: "Email and password are required" });
-  }
+  // if (!email || !password) {
+  //   return res.status(400).json({ message: "Email and password are required" });
+  // }
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ Username });
     if (!user) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
@@ -41,7 +42,7 @@ exports.loginUser = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",  // Correct JWT expiration
+      expiresIn: "1h", // Correct JWT expiration
     });
 
     res.status(200).json({ token, message: "Login successful" });
