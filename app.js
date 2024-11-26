@@ -9,8 +9,7 @@ require("dotenv").config();
 const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userRoute");
 const authRoute = require("./routes/authRoute");
-
-// const userRoute = require("./routes/userAuthRoute");
+// const orderRoute = require('./routes/orderRoute')
 const commentsRoute = require("./routes/commentsRoute");
 
 const app = express();
@@ -30,6 +29,7 @@ app.use("/api/products", productRoute);
 app.use("/api/user", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/comments", commentsRoute);
+// app.use("./api/orders", orderRoute)
 
 // Default Route
 app.get("/", (req, res) => {

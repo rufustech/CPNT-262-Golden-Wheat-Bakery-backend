@@ -1,4 +1,7 @@
+const bcrypt = require('bcryptjs');
 const User = require("../models/userAuthModel"); // Adjust the path based on your file structure
+const jwt = require("jsonwebtoken")
+
 
 exports.registerUser = async (req, res) => {
   const { username, email, password } = req.body;
@@ -24,14 +27,14 @@ exports.registerUser = async (req, res) => {
 
 // Login User
 exports.loginUser = async (req, res) => {
-  const { Username, password } = req.body;
+  const { username, password } = req.body;
 
   // if (!email || !password) {
   //   return res.status(400).json({ message: "Email and password are required" });
   // }
 
   try {
-    const user = await User.findOne({ Username });
+    const user = await User.findOne({ username });
     if (!user) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
