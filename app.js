@@ -10,6 +10,9 @@ const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userRoute");
 const authRoute = require("./routes/authRoute");
 
+// const userRoute = require("./routes/userAuthRoute");
+const commentsRoute = require("./routes/commentsRoute");
+
 const app = express();
 
 app.use(express.json()); // Middleware for parsing JSON
@@ -26,6 +29,7 @@ mongoose
 app.use("/api/products", productRoute);
 app.use("/api/user", userRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/comments", commentsRoute);
 
 // Default Route
 app.get("/", (req, res) => {
