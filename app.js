@@ -1,15 +1,20 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const morgan = require("morgan");
+
 require("dotenv").config();
 
-//API endpoints
+// API endpoints
 const productRoute = require("./routes/productRoute");
-const userRoute = require("./routes/userAuthRoute");
+const userRoute = require("./routes/userRoute");
+const authRoute = require("./routes/authRoute");
 
 const app = express();
 
-// Middleware for parsing JSON
-app.use(express.json());
+app.use(express.json()); // Middleware for parsing JSON
+app.use(cors());
+app.use(morgan("dev"));
 
 // Connect to MongoDB
 mongoose
@@ -20,10 +25,43 @@ mongoose
 // API Routes
 app.use("/api/products", productRoute);
 app.use("/api/user", userRoute);
+app.use("/api/auth", authRoute);
 
 // Default Route
 app.get("/", (req, res) => {
   res.send("Welcome to the Node.js Server!");
+});
+
+// Uncomment and correct the following route if needed
+// const Comment = require("./models/comment"); // Ensure this model is defined and imported
+// app.get("/comments", async (req, res) => {
+//   try {
+//     const result = await Comment.find();
+//     res.json({ comments: result });
+//   } catch (err) {
+//     res.status(500).json({ message: "Error fetching comments" });
+//   }
+// });
+
+// Error Handler Middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res
+    .status(err.status || 500)
+    .json({ message: err.message || "Internal Server Error" });
+});
+
+// Graceful Shutdown
+process.on("SIGINT", async () => {
+  console.log("Shutting down gracefully...");
+  try {
+    await mongoose.connection.close();
+    console.log("MongoDB connection closed.");
+  } catch (err) {
+    console.error("Error closing MongoDB connection:", err);
+  } finally {
+    process.exit(0);
+  }
 });
 
 // Start Server

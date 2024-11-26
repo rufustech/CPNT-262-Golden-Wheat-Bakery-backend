@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema({
   weight: { type: Number },
   shelfLife: { type: String },
   ingredients: [{ type: String }],
-  inventory: { type: Number, required: true },
+  inventory: { type: Number, required: true, default: 0 },
   category: { type: String, required: true }, // e.g., 'Bread', 'Buns', 'Pastries'
 });
 

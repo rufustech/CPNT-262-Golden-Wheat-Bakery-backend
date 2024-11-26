@@ -1,19 +1,20 @@
 const express = require("express");
+const router = express.Router();
+const authMiddleware = require("../middleware/authMiddleware"); // Import middleware
 const {
-  getProducts,
+  getAllProducts,
   getProductById,
   createProduct,
   updateProduct,
   deleteProduct,
-} = require("../controllers/productsController");
+} = require("../controllers/productsController"); // Import controller methods
 
-const router = express.Router();
 
-// CRUD routes
-router.get("/", getProducts); // GET all products
-router.get("/:id", getProductById); // GET a product by ID
-router.post("/", createProduct); // POST a new product
-router.put("/:id", updateProduct); // PUT update a product by ID
-router.delete("/:id", deleteProduct); // DELETE a product by ID
+// Define routes
+router.get("/", authMiddleware.protect, getAllProducts); // Get all products (protected)
+router.get("/:id", authMiddleware.protect, getProductById); // Get product by ID (protected)
+router.post("/", authMiddleware.protect, createProduct); // Create a new product (protected)
+router.put("/:id", authMiddleware.protect, updateProduct); // Update a product by ID (protected)
+router.delete("/:id", authMiddleware.protect, deleteProduct); // Delete a product by ID (protected)
 
 module.exports = router;

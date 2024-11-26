@@ -14,7 +14,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-const Products = require("./models/productsModel");
+const Products = require("../models/productsModel");
 
 const addProducts = async () => {
   const products = [
