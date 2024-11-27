@@ -9,9 +9,8 @@ const {
   deleteProduct,
 } = require("../controllers/productsController"); // Import controller methods
 
-
 // Define routes
-router.get("/", authMiddleware.protect, getAllProducts); // Get all products (protected)
+router.get("/", getAllProducts); // Get all products (protected)
 router.get("/:id", authMiddleware.protect, getProductById); // Get product by ID (protected)
 router.post("/", authMiddleware.protect, createProduct); // Create a new product (protected)
 router.put("/:id", authMiddleware.protect, updateProduct); // Update a product by ID (protected)

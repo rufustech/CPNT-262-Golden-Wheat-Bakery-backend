@@ -20,40 +20,40 @@ const createTestUser = async (userData) => {
 const createMultipleUsers = () => {
   const users = [
     {
-      username: "rufaro123",
-      email: "rufaro@goldenbakery.ca",
-      password: "password123",
+      username: "rufaro1234",
+      email: "rufaro1@goldenbakery.ca",
+      password: "password1234",
       name: "Rufaro",
       createdAt: "2024-11-25T00:00:00Z",
     },
-    {
-      username: "feli123",
-      email: "feli@goldenbakery.ca",
-      password: "password123",
-      name: "Feli",
-      createdAt: "2024-11-25T00:00:00Z",
-    },
-    {
-      username: "mark123",
-      email: "mark@goldenbakery.ca",
-      password: "password123",
-      name: "Mark",
-      createdAt: "2024-11-25T00:00:00Z",
-    },
-    {
-      username: "gabriel123",
-      email: "gabriel@goldenbakery.ca",
-      password: "password123",
-      name: "Gabriel",
-      createdAt: "2024-11-25T00:00:00Z",
-    },
-    {
-      username: "ethan123",
-      email: "ethan@goldenbakery.ca",
-      password: "password123",
-      name: "Ethan",
-      createdAt: "2024-11-25T00:00:00Z",
-    },
+    // {
+    //   username: "feli123",
+    //   email: "feli@goldenbakery.ca",
+    //   password: "password123",
+    //   name: "Feli",
+    //   createdAt: "2024-11-25T00:00:00Z",
+    // },
+    // {
+    //   username: "mark123",
+    //   email: "mark@goldenbakery.ca",
+    //   password: "password123",
+    //   name: "Mark",
+    //   createdAt: "2024-11-25T00:00:00Z",
+    // },
+    // {
+    //   username: "gabriel123",
+    //   email: "gabriel@goldenbakery.ca",
+    //   password: "password123",
+    //   name: "Gabriel",
+    //   createdAt: "2024-11-25T00:00:00Z",
+    // },
+    // {
+    //   username: "ethan123",
+    //   email: "ethan@goldenbakery.ca",
+    //   password: "password123",
+    //   name: "Ethan",
+    //   createdAt: "2024-11-25T00:00:00Z",
+    // },
   ];
   users.forEach((user) => createTestUser(user));
 };
