@@ -50,30 +50,27 @@ async function addToCart(req, res) {
 
 		res.status(200).json(cart);
 	} catch (error) {
-		res.status(500).json({ message: "Error adding to cart", error });
+		res.status(500).json({ message: "Error adding to cart" });
 		console.error(error);
 	}
 }
 
 async function viewCart(req, res) {
-	console.log(req);
 	try {
-		const userId = req.user._id;
-		console.log(userId);
-		let cart = await Cart.findOne({ user: user._id });
-		const existingItem = cart.items.find((item) => item.product === productId);
-		if (!user) {
-			return res.status(401).json({ message: "Not authorized, no user found" });
-		}
+		const { user } = req.body;
 
-		console.log(cart);
+		const cart = await Cart.findOne({ user: user._id }).populate(
+			"items.product"
+		);
+
 		if (!cart) {
 			return res.status(404).json({ message: "Cart is empty" });
 		}
 
 		res.status(200).json(cart);
 	} catch (error) {
-		res.status(500).json({ message: "Error viewing cart", error });
+		res.status(500).json({ message: "Error viewing cart" });
+		console.error(error);
 	}
 }
 
