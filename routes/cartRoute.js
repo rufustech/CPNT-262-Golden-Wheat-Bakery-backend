@@ -4,6 +4,6 @@ const authMiddleware = require("../middleware/authMiddleware");
 const { addToCart, viewCart } = require("../controllers/cartController");
 
 router.get("/", viewCart);
-router.post("/:id", addToCart);
+router.post("/", addToCart);
 
 module.exports = router;
