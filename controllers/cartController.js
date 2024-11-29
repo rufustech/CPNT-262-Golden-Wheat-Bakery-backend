@@ -56,9 +56,16 @@ async function addToCart(req, res) {
 }
 
 async function viewCart(req, res) {
-	try {
-		const { user } = req.body;
+	const { user } = req.body;
+	console.log("Request Body:", req.body);
 
+	if (!user || !user._id) {
+		return res
+			.status(400)
+			.json({ message: "User not found or invalid request" });
+	}
+
+	try {
 		const cart = await Cart.findOne({ user: user._id }).populate(
 			"items.product"
 		);
@@ -78,3 +85,5 @@ module.exports = {
 	viewCart,
 	addToCart,
 };
+
+//

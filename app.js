@@ -16,6 +16,10 @@ const commentsRoute = require("./routes/commentsRoute");
 const app = express();
 
 app.use(express.json()); // Middleware for parsing JSON
+
+//Models
+
+//Contor
 app.use(cors());
 app.use(morgan("dev"));
 
@@ -31,7 +35,6 @@ app.use("/api/user", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/comments", commentsRoute);
 app.use("/api/cart", cartRoute);
-// app.use("./api/orders", orderRoute)
 
 // Default Route
 app.get("/", (req, res) => {
