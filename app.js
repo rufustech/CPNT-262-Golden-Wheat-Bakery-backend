@@ -9,7 +9,6 @@ require("dotenv").config();
 const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userRoute");
 const authRoute = require("./routes/authRoute");
-// const orderRoute = require("./routes/orderRoute");
 const cartRoute = require("./routes/cartRoute");
 const commentsRoute = require("./routes/commentsRoute");
 
@@ -19,7 +18,7 @@ app.use(express.json()); // Middleware for parsing JSON
 
 //Models
 
-//Contor
+//cors
 app.use(cors());
 app.use(morgan("dev"));
 
@@ -42,18 +41,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Node.js Server!");
 });
 
-// Uncomment and correct the following route if needed
-// const Comment = require("./models/comment"); // Ensure this model is defined and imported
-// app.get("/comments", async (req, res) => {
-//   try {
-//     const result = await Comment.find();
-//     res.json({ comments: result });
-//   } catch (err) {
-//     res.status(500).json({ message: "Error fetching comments" });
-//   }
-// });
 
-// Error Handler Middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res
