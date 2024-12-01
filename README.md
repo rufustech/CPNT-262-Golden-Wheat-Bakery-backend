@@ -11,8 +11,10 @@ Welcome to the backend repository for the **Golden Wheat Bakery** project. This 
 3. [Setup Instructions](#setup-instructions)
 4. [Working with the Repository](#working-with-the-repository)
 5. [Branching Workflow](#branching-workflow)
-6. [Contribution Guidelines](#contribution-guidelines)
-7. [License](#license)
+6. [API Endpoints](#api-endpoints)
+7. [Contribution Guidelines](#contribution-guidelines)
+8. [Testing the Application](#testing-the-application)
+9. [License](#license)
 
 ---
 
@@ -120,6 +122,39 @@ We follow a branching strategy to maintain a clean workflow. Here are the branch
 
 ---
 
+## **API Endpoints**
+
+The application provides several API endpoints for interacting with its resources. Below is the list of routes available:
+
+### **Products**
+- **GET** `/api/products`: Retrieve all products.
+- **POST** `/api/products`: Add a new product.
+- **PUT** `/api/products/:id`: Update an existing product by ID.
+- **DELETE** `/api/products/:id`: Delete a product by ID.
+
+### **Users**
+- **GET** `/api/user`: Retrieve user data.
+- **POST** `/api/user`: Register a new user.
+
+### **Authentication**
+- **POST** `/api/auth`: Authenticate a user.
+
+### **Comments**
+- **GET** `/api/comments`: Retrieve all comments.
+- **POST** `/api/comments`: Add a new comment.
+
+### **Cart**
+- **GET** `/api/cart`: Retrieve all cart items.
+- **POST** `/api/cart`: Add an item to the cart.
+- **PUT** `/api/cart/:id`: Update a cart item.
+- **DELETE** `/api/cart/:id`: Remove a cart item.
+
+### Connecting to the Endpoints
+- Use tools like **Postman** or **curl** to test API requests.
+- Ensure your server is running at `http://localhost:5000` or the deployment URL.
+
+---
+
 ## **Contribution Guidelines**
 
 ### 1. **Work in Your Fork**
@@ -166,7 +201,3 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 ---
 
 Feel free to reach out if you encounter issues or have questions. Happy coding! 🎉
-
-
-
-
