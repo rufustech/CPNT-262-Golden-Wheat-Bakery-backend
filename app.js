@@ -14,7 +14,7 @@ const commentsRoute = require("./routes/commentsRoute");
 
 const app = express();
 
-app.use(express.json()); // Middleware for parsing JSON
+app.use(express.json()); 
 
 //Models
 
