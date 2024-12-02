@@ -3,7 +3,7 @@ const Product = require("../models/productsModel");
 // Get all products
 exports.getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find(); // Assuming you're using Mongoose for MongoDB
+    const products = await Product.find(); 
     console.log(products);
     res.status(200).json(products);
   } catch (error) {
@@ -12,7 +12,7 @@ exports.getAllProducts = async (req, res) => {
       .json({ message: "Failed to fetch products", error: error.message });
   }
 };
-// console.log(getAllProducts); // This should log a function
+
 
 // Get product by ID
 exports.getProductById = async (req, res) => {

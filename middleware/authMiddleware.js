@@ -10,7 +10,7 @@ exports.protect = async (req, res, next) => {
   ) {
     try {
       // Extract token from header
-      token = req.headers.authorization.split(" ")[1]; // Fix: splitting the header value correctly
+      token = req.headers.authorization.split(" ")[1]; 
       console.log(token);
 
       // Verify token

@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const User = require("../models/userAuthModel"); // Adjust the path based on your file structure
+const User = require("../models/userAuthModel"); 
 const jwt = require("jsonwebtoken")
 
 
@@ -29,10 +29,6 @@ exports.registerUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   const { username, password } = req.body;
 
-  // if (!email || !password) {
-  //   return res.status(400).json({ message: "Email and password are required" });
-  // }
-
   try {
     const user = await User.findOne({ username });
     if (!user) {
@@ -45,7 +41,7 @@ exports.loginUser = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h", // Correct JWT expiration
+      expiresIn: "1h", // We can adjust excpiry as we see fut
     });
 
     res.status(200).json({ token, message: "Login successful" });

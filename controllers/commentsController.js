@@ -8,7 +8,7 @@ const getComments = async (req, res) => {
 
   try {
     const filter = category ? { category } : {};
-    const comments = await Comment.find(filter).populate("user", "username"); // Populate user details if needed
+    const comments = await Comment.find(filter).populate("user", "username");
     res.status(200).json(comments);
   } catch (error) {
     res.status(500).json({
@@ -23,7 +23,7 @@ const getCommentById = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const comment = await Comment.findById(id).populate("user", "username"); // Populate user details if needed
+    const comment = await Comment.findById(id).populate("user", "username");
     if (!comment) {
       return res.status(404).json({ error: "Comment not found" });
     }
@@ -39,15 +39,13 @@ const getCommentById = async (req, res) => {
 
 // Create a new comment
 const createComment = async (req, res) => {
-	console.log(req);
-	
+  console.log(req);
+
   const { user, item, text, createdAt } = req.body;
 
   try {
     // Validate that user and item are valid ObjectIds
-    if (
-      !user || !item
-    ) {
+    if (!user || !item) {
       return res.status(400).json({ error: "Invalid user or item ID" });
     }
 
@@ -75,8 +73,8 @@ const updateComment = async (req, res) => {
 
   try {
     const updatedComment = await Comment.findByIdAndUpdate(id, updateData, {
-      new: true, // Return the updated document
-      runValidators: true, // Ensure validations are applied
+      new: true,
+      runValidators: true,
     });
 
     if (!updatedComment) {

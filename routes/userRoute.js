@@ -8,15 +8,15 @@ const {
 } = require("../controllers/userController");
 
 //If else for guest and authenticated users
-const { protect } = require("../middleware/authMiddleware"); // Import the protect middleware
+const { protect } = require("../middleware/authMiddleware"); 
 
 const router = express.Router();
 
 // Routes
-router.get("/", protect, getAllUsers); // Protect the route for fetching all users
-router.post("/", createUser); // Don't protect this route (public access)
-router.get("/:id", protect, getUserById); // Protect the route for fetching a user by ID
-router.put("/:id", protect, updateUser); // Protect the route for updating a user
-router.delete("/:id", protect, deleteUser); // Protect the route for deleting a user
+router.get("/", protect, getAllUsers); 
+router.post("/", createUser); 
+router.get("/:id", protect, getUserById); 
+router.put("/:id", protect, updateUser); 
+router.delete("/:id", protect, deleteUser); 
 
 module.exports = router;
